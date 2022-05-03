@@ -1,18 +1,10 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'blog_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  void navigateToBlogPage(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => BlogScreen(),
-      ),
-    );
-  }
+  void navigateToBlogPage(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -21,44 +13,49 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            child: _grtColumn(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _getRow(),
+                Image(
+                  image: AssetImage('images/welcome.png'),
+                ),
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(
+                      color: Color(0xFF85586F),
+                      width: 2.0,
+                    ),
+                    primary: Color(0xFF85586F),
+                    minimumSize: Size(150, 40),
+                  ),
+                  onPressed: () {
+                    navigateToBlogPage(context);
+                  },
+                  child: Text('ورود به حساب'),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFF85586F),
+                    minimumSize: Size(150, 40),
+                  ),
+                  onPressed: () {},
+                  child: Text('ثبت نام'),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'فراموشی رمز عبور؟',
+                    style: TextStyle(
+                      color: Color(0xFF85586F),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _grtColumn() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _getRow(),
-        Image(
-          image: AssetImage('images/welcome.png'),
-        ),
-        OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            side: BorderSide(
-              color: Color(0xFF85586F),
-              width: 2.0,
-            ),
-            primary: Color(0xFF85586F),
-            minimumSize: Size(150, 40),
-          ),
-          onPressed: () {
-            navigateToBlogPage(context);
-          },
-          child: Text('ورود به حساب'),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Color(0xFF85586F),
-            minimumSize: Size(150, 40),
-          ),
-          onPressed: () {},
-          child: Text('ثبت نام'),
-        )
-      ],
     );
   }
 
