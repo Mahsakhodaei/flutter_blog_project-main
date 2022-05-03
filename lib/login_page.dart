@@ -1,14 +1,29 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'blog_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  void navigateToBlogPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => BlogScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8ECD1),
       body: SafeArea(
-        child: SingleChildScrollView(child: _grtColumn()),
+        child: Center(
+          child: SingleChildScrollView(
+            child: _grtColumn(),
+          ),
+        ),
       ),
     );
   }
@@ -17,7 +32,6 @@ class LoginPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 30),
         _getRow(),
         Image(
           image: AssetImage('images/welcome.png'),
@@ -31,7 +45,9 @@ class LoginPage extends StatelessWidget {
             primary: Color(0xFF85586F),
             minimumSize: Size(150, 40),
           ),
-          onPressed: () {},
+          onPressed: () {
+            navigateToBlogPage(context);
+          },
           child: Text('ورود به حساب'),
         ),
         ElevatedButton(
@@ -60,7 +76,7 @@ class LoginPage extends StatelessWidget {
         ),
         SizedBox(width: 20),
         Icon(
-          Icons.logout,
+          Icons.login,
           color: Color(0xFF85586F),
           size: 24.0,
         )
