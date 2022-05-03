@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'blog_page.dart';
+import 'password_recovery.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  void navigateToBlogPage(BuildContext context) {}
+  void navigateToBlogPage(BuildContext context,Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return page;
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class LoginPage extends StatelessWidget {
                     minimumSize: Size(150, 40),
                   ),
                   onPressed: () {
-                    navigateToBlogPage(context);
+                    navigateToBlogPage(context,BlogScreen());
                   },
                   child: Text('ورود به حساب'),
                 ),
@@ -43,7 +52,9 @@ class LoginPage extends StatelessWidget {
                   child: Text('ثبت نام'),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateToBlogPage(context,PasswordRecoveryPage());
+                  },
                   child: Text(
                     'فراموشی رمز عبور؟',
                     style: TextStyle(
