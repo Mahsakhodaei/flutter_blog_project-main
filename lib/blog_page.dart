@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog_project/custom_widget/post_widget.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({Key? key}) : super(key: key);
@@ -15,67 +16,34 @@ class BlogScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-            child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: Image(
-                image: AssetImage('images/s.png'),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  getBlogPost(imageName: 'a.png', title: 'سیگنال خرید 14 آبان'),
+                  getBlogPost(imageName: 'c.png', title: 'سیگنال خرید 16 آبان'),
+                  getBlogPost(imageName: 'r.png', title: 'سیگنال خرید 17 آبان'),
+                  getBlogPost(imageName: 's.png', title: 'سیگنال خرید 20 آبان'),
+                  SizedBox(height: 20),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Color(0xFFF8ECD1),
+                      minimumSize: Size(150, 40),
+                      backgroundColor: Color(0xFF85586F),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('خروج از حساب'),
+                  )
+                ],
               ),
             ),
-            SizedBox(height: 20),
-            Text(
-              'برای 14 آبانsafemoon : سیگنال خرید',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF85586F),
-              ),
-            ),
-            SizedBox(height: 10),
-            _getRow(),
-          ],
-        )),
+          ),
+        ),
       ),
-    );
-  }
-
-  Widget _getRow() {
-    return Row(
-      children: [
-        Expanded(
-          child: Center(
-            child: Text(
-              'فروش روی : 100،000',
-              style: TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.red),
-            ),
-          ),
-        ),
-        Icon(
-          Icons.sell,
-          color: Color(0xFF85586F),
-          size: 24.0,
-        ),
-        Expanded(
-          child: Center(
-            child: Text(
-              'خرید روی : 34،000',
-              style: TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.green),
-            ),
-          ),
-        ),
-        Icon(
-          Icons.price_check,
-          color: Color(0xFF85586F),
-          size: 24.0,
-        ),
-      ],
     );
   }
 }
