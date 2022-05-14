@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog_project/custom_widget/post_widget.dart';
 
 class BlogScreen extends StatelessWidget {
-  const BlogScreen({Key? key}) : super(key: key);
+  BlogScreen({Key? key}) : super(key: key);
+
+  final listBlogWidget = [
+    getBlogPost(imageName: 'a.png', title: 'سیگنال خرید 14 آبان'),
+    getBlogPost(imageName: 'c.png', title: 'سیگنال خرید 16 آبان'),
+    getBlogPost(imageName: 'r.png', title: 'سیگنال خرید 17 آبان'),
+    getBlogPost(imageName: 's.png', title: 'سیگنال خرید 20 آبان'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +29,7 @@ class BlogScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  getBlogPost(imageName: 'a.png', title: 'سیگنال خرید 14 آبان'),
-                  getBlogPost(imageName: 'c.png', title: 'سیگنال خرید 16 آبان'),
-                  getBlogPost(imageName: 'r.png', title: 'سیگنال خرید 17 آبان'),
-                  getBlogPost(imageName: 's.png', title: 'سیگنال خرید 20 آبان'),
+                  ...listBlogWidget,  //speread
                   SizedBox(height: 20),
                   TextButton(
                     style: TextButton.styleFrom(
